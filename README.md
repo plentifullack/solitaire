@@ -104,7 +104,7 @@ Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: t3;f1
 An updated game board is shown at each move.
 
 The top card in the discard pile can be moved to a Tableau or Foundation pile. To do so, use d as the source (e.g., d;t2).
-Also, it's possible to move more that one card between Tableau piles. To designate more than one card as the source of the move, append ,n to the command (where n is the desired number of cards). See below example (t0,2;t2)
+Also, it's possible to move more than one card between Tableau piles. To designate more than one card as the source of the move, append ,n to the source command (where n is the desired number of cards). See below example (t0,2;t2)
 
 ```
 t0:    [6]   5_D  4_C 
@@ -164,6 +164,6 @@ s: [17]   d:  [2]  Q_D
 
 ```
 
-If you command a source without a required destination, the next command will choose the destination. To cancel a selected source, re-enter the source as destination.
+If you command a source without also providing the required destination, the next command will choose the destination. To cancel a selected source, re-enter the source as destination.
 
 To restock an empty stock pile from the discards, use the **s** command.

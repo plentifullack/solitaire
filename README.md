@@ -164,6 +164,6 @@ s: [17]   d:  [2]  Q_D
 
 ```
 
-If you command a source without also providing the required destination, the next command will choose the destination. To cancel a selected source, re-enter the source as destination.
+If you command a source without also providing the required destination, the next command will choose the destination. To cancel a selected source, re-enter the source pile as destination.
 
 To restock an empty stock pile from the discards, use the **s** command.

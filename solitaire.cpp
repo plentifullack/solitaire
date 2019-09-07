@@ -356,7 +356,10 @@
 		std::istringstream f(c);
 		std::string s;
 		while (getline(f, s, ';')) {
-			if (s.at(0) == 's' && s.length() == 1) {
+            if (s.length()==0){
+               // ignore
+            }
+			else if (s.at(0) == 's' && s.length() == 1) {
 				cmds.push_back(Command('s', &stock[0]));
 			}
 			else if (s.at(0) == 'd' && s.length() == 1) {

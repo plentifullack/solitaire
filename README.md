@@ -35,9 +35,9 @@ s: [24]   d: [0]
 Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: 
 ```
 
-The seven Tableau piles are designated t0 through t6, the foundation piles are f0 through f3, stock is s and discards is d. In the above, we see that t0 has one face up card (five of Diamonds) over 6 face down cards. Foundation piles are empty, stock contains 24 face down cards and nothing is yet discarded. 
+The seven Tableau piles are named **t**0 through **t**6, the foundation piles are **f**0 through **f**3, stock is **s** and discards is **d**. In the above, we see that t0 has one face up card (five of Diamonds) over 6 face down cards. Foundation piles are empty, stock contains 24 face down cards and nothing is yet discarded. 
 
-We can move cards by entering a source and destination. Above, we see an ace (A_H) in tableau pile t2. We can move the ace to an empty foundation pile by entering the source and destination, separated by a ';' (t2;f0). The board then updates as follows:
+We can move cards by entering a source and destination. Above, we see an ace (A_H) in tableau pile t2. We can move the ace to an empty foundation pile by entering the source and destination, separated by a ';' (**t2;f0**). The board then updates as follows:
 
 ```
 Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: t2;f0
@@ -58,7 +58,7 @@ f3: [0]
 s: [24]   d: [0]
 ```
 
-We can chain multiple commands in a single entry using ';'. In the following, we move the four of clubs onto the five of Diamonds (t3;t0), then move the five of Clubs onto the six of Diamonds (t5;t6) and finally, flip a stock card (s) onto the discard pile.
+We can chain multiple commands in a single entry using ';'. In the following, we move the four of clubs onto the five of Diamonds (**t3;t0**), then move the five of Clubs onto the six of Diamonds (**t5;t6**) and finally, flip a stock card (**s**) onto the discard pile.
 
 ```
 Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: t3;t0;t5;t6;s
@@ -103,8 +103,8 @@ Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: t3;f1
 
 An updated game board is shown at each move.
 
-The top card in the discard pile can be moved to a Tableau or Foundation pile. To do so, use d as the source (e.g., d;t2).
-Also, it's possible to move more than one card between Tableau piles. To designate more than one card as the source of the move, append ,n to the source command (where n is the desired number of cards). See below example (t0,2;t2)
+The top card in the discard pile can be moved to a Tableau or Foundation pile. To do so, use d as the source (e.g., **d;t2**).
+Also, it's possible to move more than one card between Tableau piles. To designate more than one card as the source of the move, append ,n to the source command (where n is the desired number of cards). See below example (**t0,2;t2**)
 
 ```
 t0:    [6]   5_D  4_C 

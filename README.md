@@ -35,7 +35,7 @@ s: [24]   d: [0]
 Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: 
 ```
 
-The seven Tableau piles are named **t**0 through **t**6, the foundation piles are **f**0 through **f**3, stock is **s** and discards is **d**. In the above, we see that t0 has one face up card (five of Diamonds) over 6 face down cards. Foundation piles are empty, stock contains 24 face down cards and nothing is yet discarded. 
+The seven Tableau piles are named **t**0 through **t**6, the four foundation piles are **f**0 through **f**3, stock is **s** and discards is **d**. In the above, we see that t0 has one face up card (five of Diamonds) over 6 face down cards. Foundation piles are empty, stock contains 24 face down cards and nothing is yet discarded. 
 
 We can move cards by entering a source and destination. Above, we see an ace (A_H) in tableau pile t2. We can move the ace to an empty foundation pile by entering the source and destination, separated by a ';' (**t2;f0**). The board then updates as follows:
 

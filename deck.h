@@ -34,7 +34,9 @@ public:
         KING,
         RANK_CT = 13
     };
-    int cmpAdjacency(Card&other, bool alternatingColor=false) const;
+    // 
+    int cmpAdjacency(Card&other) const;
+    int cmpAdjacency(Card&other, std::function<bool()>) const;
     Rank getRank() const;
     Suit getSuit() const;
 

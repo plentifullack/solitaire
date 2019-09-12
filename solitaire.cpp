@@ -131,9 +131,7 @@ bool Tableau::choose(int ct)
                     bool thatIsRed = s2 == Card::DIAMONDS || s2 == Card::HEARTS;
                     return thisIsRed != thatIsRed;
                 };
-
-
-                if (visiblesrc&&-1 == cards.back().cmpAdjacency(*game.pickedCard(),alt_color)) { // valid move? (isAltColor)
+                if (visiblesrc&&-1 == cards.back().cmpAdjacency(*game.pickedCard(),alt_color)) { // valid move?
                     for (int i = ct; i > 0; --i) {
                         cards.push_back(srcp->cards[srcsz - i]);
                     }
@@ -216,7 +214,6 @@ bool Foundation::choose(int)
             auto same_suit = [s1,s2]() {
                 return s1==s2;
             };
-
             if (1==game.pickedCount() && 1==cards.back().cmpAdjacency(*game.pickedCard(),same_suit)) { // valid move?
                 // move card
                 cards.push_back(*game.pickedCard());

@@ -88,9 +88,6 @@ class Game
 public:
     class Selection
     {
-        // pileRef
-        // cardRef
-        // cardCt
     public:
         Selection(Pile *p, Card* c, int ct = 1);
         Selection();

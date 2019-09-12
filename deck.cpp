@@ -130,13 +130,12 @@ std::string Card::shortname() const
 }
 int Card::cmpAdjacency(Card&other) const
 {
-    // default adjacency check ignores suits by unconditionally returning true.
+    // default adjacency check allows all, by unconditionally returning true.
     return cmpAdjacency(other, []()->bool{return true;});
 }
-int Card::cmpAdjacency(Card&other, std::function<bool()> suit_check) const  //bool alternatingColor=false
+int Card::cmpAdjacency(Card&other, std::function<bool()> allowed) const
 {
-    //
-    if (suit_check()){
+    if (allowed()) {
         int diff = ((int)getRank())%(int)Card::RANK_CT - (int)other.getRank() % (int)Card::RANK_CT;
         if (1 == diff) {
             return -1; // ascending adjacency
@@ -148,51 +147,6 @@ int Card::cmpAdjacency(Card&other, std::function<bool()> suit_check) const  //bo
     return 0; // not adjacent
 }
 
-//int Card::cmpAdjacency(Card&other, bool alternatingcolor) const
-//{
-//    bool validsuit = false;
-//    if (alternatingcolor) {
-//        bool thisIsRed = this->getSuit() == Card::DIAMONDS || this->getSuit() == Card::HEARTS;
-//        bool thatIsRed = other.getSuit() == Card::DIAMONDS || other.getSuit() == Card::HEARTS;
-//        validsuit = thisIsRed != thatIsRed;
-//    } else {
-//        validsuit = this->getSuit() == other.getSuit();
-//    }
-//    if (validsuit) {
-//        int diff = ((int)getRank())%(int)Card::RANK_CT - (int)other.getRank() % (int)Card::RANK_CT;
-//        if (1 == diff) {
-//            return -1; // ascending adjacency
-//        }
-//        if (-1 == diff) {
-//            return 1; // descending adjacency
-//        }
-//    }
-//    return 0; // not adjacent
-//}
-
-
-//int Card::cmpAdjacency(Card&other, bool alternatingcolor) const
-//{
-//    bool validsuit = false;
-//    if (alternatingcolor) {
-//        bool thisIsRed = this->getSuit() == Card::DIAMONDS || this->getSuit() == Card::HEARTS;
-//        bool thatIsRed = other.getSuit() == Card::DIAMONDS || other.getSuit() == Card::HEARTS;
-//        validsuit = thisIsRed != thatIsRed;
-//    } else {
-//        validsuit = this->getSuit() == other.getSuit();
-//    }
-//    if (validsuit) {
-//        int diff = ((int)getRank())%(int)Card::RANK_CT - (int)other.getRank() % (int)Card::RANK_CT;
-//        if (1 == diff) {
-//            return -1; // ascending adjacency
-//        }
-//        if (-1 == diff) {
-//            return 1; // descending adjacency
-//        }
-//    }
-//    return 0; // not adjacent
-//}
-//
 std::string Card::read()
 {
     return this->isShowing ? shortname() : "[?]";

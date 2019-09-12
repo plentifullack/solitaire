@@ -34,9 +34,10 @@ public:
         KING,
         RANK_CT = 13
     };
-    // 
+    // using overload here instead of defaults - due to rumor of earlier compiler bug (for lambda defaults)
     int cmpAdjacency(Card&other) const;
     int cmpAdjacency(Card&other, std::function<bool()>) const;
+
     Rank getRank() const;
     Suit getSuit() const;
 

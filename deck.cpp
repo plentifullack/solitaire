@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <random>
 #include <iomanip>
-#include <functional>
 
 // Card defs
 Card::Rank Card::getRank() const

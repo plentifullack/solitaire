@@ -3,6 +3,7 @@
 //
 //  deck
 #include <vector>
+#include <functional>
 
 class Deck;
 

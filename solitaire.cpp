@@ -1,5 +1,12 @@
-// solitaire.cpp : Defines most functionality for playing a game of solitaire.
-//
+/**
+ solitaire.cpp
+
+ Defines most functionality for playing a simple game of solitaire.
+
+ see https://github.com/plentifullack/solitaire
+ (steve hardy <plentifullackofwit@hotmail.com>)
+ */
+
 #include <ctype.h>
 #include "solitaire.h"
 
@@ -288,6 +295,12 @@ bool Game::hasPick() const
     return currentPick.isSelected();
 }
 
+/**
+ get a pointer to the currently selected source Pile, if any. If no source Pile is currently selected, then
+ pickedPile(isSelected() returns false.
+
+ @return a pointer to the currently selected source pile, or nullptr if none selected.
+ */
 Pile* Game::pickedPile()
 {
     return currentPick.pRef;

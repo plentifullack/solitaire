@@ -1,3 +1,10 @@
+/**
+ solitaire.h
+
+ see https://github.com/plentifullack/solitaire
+ (steve hardy <plentifullackofwit@hotmail.com>)
+ */
+
 #pragma once
 #include "deck.h"
 
@@ -14,13 +21,19 @@ class Game;
 /**
 * A Pile contains an ordered collection of Cards and a Game reference.
 *
-* Has a choose method that can request corresponding game update if choice is valid.
+* Has a choose method that requests corresponding game update if choice is valid (as determined by target Pile).
 */
 class Pile
 {
 public:
     // gets game ref
     Game& game;
+    /**
+     Request corresponding game update if choice is valid
+
+     @param ct Number of cards, where multi-pick is allowed. Defaults to 1.
+     @return true if choice caused change in game state.
+     */
     virtual bool choose(int ct = 1) = 0;
     virtual std::string toString() = 0;
 private:
@@ -36,9 +49,15 @@ public:
 class Discards : public Pile
 {
 public:
-    bool choose(int ct);
     Discards(Game&g, std::string id);
     virtual ~Discards();
+    /**
+     Request corresponding game update if choice is valid
+
+     @param ct Number of cards for a source pick. (Optional and Ignored in this context. 1 is used)
+     @return true if choice caused change in game state.
+     */
+    bool choose(int ct=1);
     std::string toString();
 };
 
@@ -48,9 +67,21 @@ class Stock : public Pile
     Discards&discards;
 
 public:
-    bool choose(int ct);
+    /**
+     @param g Game in which this Stock Pile participates.
+     @param disc Associated Discard pile. During gameplay, the only valid destination for a
+     Stock Pile pick is the Discard Pile. So choosing Stock source automatically completes the implied move.
+     */
     Stock(Game&g, std::string id, Discards&disc);
     virtual ~Stock();
+
+    /**
+     Request corresponding game update if choice is valid
+
+     @param ct Number of cards for a source pick. (Optional and Ignored in this context. 1 is used)
+     @return true if choice caused change in game state.
+     */
+    bool choose(int ct=1);
     std::string toString();
     bool restock();
 };
@@ -58,16 +89,28 @@ public:
 class Tableau : public Pile
 {
 public:
-    bool choose(int ct);
     Tableau(Game&g, std::string id);
     virtual ~Tableau();
+    /**
+     Request corresponding game update if choice is valid
+
+     @param ct Number of cards (for a source pick - ignored for destination). Defaults to 1.
+     @return true if choice caused change in game state.
+     */
+    bool choose(int ct=1);
     std::string toString();
 };
 
 class Foundation : public Pile
 {
 public:
-    bool choose(int ct);
+    /**
+     Request corresponding game update if choice is valid
+
+     @param ct Number of cards for a source pick. (Optional and Ignored in this context. 1 is used)
+     @return true if choice caused change in game state.
+     */
+    bool choose(int ct=1);
     Foundation(Game&g, std::string id);
     virtual ~Foundation();
     std::string toString();

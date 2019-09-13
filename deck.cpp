@@ -1,5 +1,12 @@
-//
-//  deck
+/**
+ deck.cpp
+
+ A deck of playing cards.
+
+ see https://github.com/plentifullack/solitaire
+ (steve hardy <plentifullackofwit@hotmail.com>)
+ */
+
 #include "deck.h"
 #include <iostream>
 #include <exception>
@@ -129,7 +136,9 @@ std::string Card::shortname() const
 }
 int Card::cmpAdjacency(Card&other) const
 {
-	auto always_allow = []() {return true; }; // by default, no caller imposed constraint.
+    auto always_allow = []() {
+        return true;
+    }; // by default, no caller imposed constraint.
     return cmpAdjacency(other, always_allow);
 }
 int Card::cmpAdjacency(Card&other, std::function<bool()> is_allowed) const

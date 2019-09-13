@@ -1,7 +1,14 @@
+/**
+ deck.h
+
+ A deck of playing cards.
+
+ see https://github.com/plentifullack/solitaire
+ (steve hardy <plentifullackofwit@hotmail.com>)
+ */
+
 #pragma once
 
-//
-//  deck
 #include <vector>
 #include <functional>
 

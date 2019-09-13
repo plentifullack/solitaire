@@ -129,12 +129,12 @@ std::string Card::shortname() const
 }
 int Card::cmpAdjacency(Card&other) const
 {
-    // default adjacency check allows all, by unconditionally returning true.
-    return cmpAdjacency(other, []()->bool{return true;});
+	auto always_allow = []() {return true; }; // by default, no caller imposed constraint.
+    return cmpAdjacency(other, always_allow);
 }
-int Card::cmpAdjacency(Card&other, std::function<bool()> allowed) const
+int Card::cmpAdjacency(Card&other, std::function<bool()> is_allowed) const
 {
-    if (allowed()) {
+    if (is_allowed()) {
         int diff = ((int)getRank())%(int)Card::RANK_CT - (int)other.getRank() % (int)Card::RANK_CT;
         if (1 == diff) {
             return -1; // ascending adjacency

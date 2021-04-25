@@ -414,7 +414,7 @@ std::vector<Command> Game::get_cmd()
     } else if (isWon()) {
         std::cout << std::endl << "WINNER! " << std::endl;
     }
-    std::cout << "Enter command (s|d|t{i}[,n]|f{i})[;..]|Q: ";
+    std::cout << "Enter command (s|d|t{i}[,n]|f{i})[;..]|?|Q: ";
     std::string c;
     std::cin >> c;
 
@@ -444,7 +444,16 @@ std::vector<Command> Game::get_cmd()
             cmds.push_back(Command()); // quit command
         } else {
             std::ostringstream msg;
-            msg << "unrecognized command. Try again: [" << s << "]";
+            if (s.at(0)=='?' && s.length()==1)
+                msg << "Solitaire card pile designations -> t:tableau f:foundation s:stock d:discards\n\n"
+                "Typical command designates a source, optionally followed by a destination.\n"
+                "Any pile type can be a valid source or destination EXCEPT s can ONLY be a source. \n"
+                "(Implicit destination for s is always d. When stock is empty, s command replenishes from discards.)\n"
+                "\t\tto move 2 top cards from tableau pile 0 to foundation pile 3: t0,2;f3\n"
+                "\t\tto move top discard to tableau pile 4: d;t4\n"
+                "If command omits required destination, the destination will be taken from next input.\n";
+            else
+                msg << "unrecognized command. Try again: [" << s << "]";
             throw std::invalid_argument(std::string(msg.str()));
         }
     }
